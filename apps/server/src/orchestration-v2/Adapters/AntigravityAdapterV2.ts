@@ -51,6 +51,7 @@ import {
   normalizeAntigravityToolCall,
 } from "../../provider/acp/AntigravityProtocol.ts";
 import { isAntigravitySignInRequiredError } from "../../provider/antigravityAuthSupport.ts";
+import { extractAntigravityElicitationForm } from "../../provider/acp/AntigravityElicitationForm.ts";
 import {
   AcpProviderCapabilitiesV2,
   makeAcpAdapterV2,
@@ -286,6 +287,7 @@ export function makeAntigravityAcpAdapterFlavor(
     },
     permissionDisposition: antigravityPermissionDisposition,
     approvalOptions: antigravityApprovalOptions,
+    extractElicitationForm: extractAntigravityElicitationForm,
     extractPermissionQuestion: (request) => {
       const question = extractAntigravityUserInputQuestion(request);
       if (question === undefined) return undefined;
